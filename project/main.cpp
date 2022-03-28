@@ -70,7 +70,7 @@ void listMenu()
         opt = getch();
         if(opt == '1')
         {
-
+            
         }
         if(opt == '2')
         {
@@ -84,11 +84,18 @@ void listMenu()
             cin >> index;
             list.addNode(index, value);
             list.displayFromHead();
-            
+
         }
         if(opt == '4')
         {
-
+            cout << "Podaj liczbe do znalezienia w liscie: ";
+            cin >> value;
+            if(list.isInTheList(value))
+                cout << "liczba znajduje sie w tablicy" << endl;
+            else
+                cout << "liczby nie znaleziono w tablicy" << endl;
+            list.displayFromHead();
+            
         }
         if(opt == '5')
         {

@@ -1,4 +1,3 @@
-
 #include<conio.h>
 #include<string>
 #include<iostream>
@@ -15,5 +14,4 @@ public:
     bool IsValueInTable(int val);
     void generateTable(int size);
     void display();
-    void menu();
 };

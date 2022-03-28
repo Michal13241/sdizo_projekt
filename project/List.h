@@ -22,4 +22,6 @@ public:
     node* searchIndex(int index);
     node* searchValue(int value);
     void generateList(int size);
+    bool isInTheList(int value);
+    bool loadFromFile(string fileName);
 };

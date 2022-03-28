@@ -95,7 +95,6 @@ void List::displayFromTail()
     return;
 }
 
-
 node* List::searchIndex(int index)
 {
     node *temp;
@@ -127,6 +126,22 @@ void List::generateList(int size)
     srand (time(NULL));
     for(int i = 1; i < size+1; i++)
     {
-        addNode(i, rand() % 100 + 1);
+        addNode(i, rand() % 1000 + 1);
     }
+}
+
+bool List::isInTheList(int value)
+{
+    node *temp;
+    temp = searchValue(value);
+    if(temp == NULL)
+    {
+        return false;
+    }
+    return temp;
+}
+
+bool List::loadFromFile(string value)
+{
+    
 }

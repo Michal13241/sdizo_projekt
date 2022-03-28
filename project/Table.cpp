@@ -13,7 +13,7 @@ void Table::generateTable(int size)
     tab = new int[cnt];
     for(int i = 0; i < cnt; i++)
     {
-        tab[i] = rand() % 100 + 1;
+        tab[i] = rand() % 1000 + 1;
     }
 }
 
