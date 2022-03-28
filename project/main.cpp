@@ -3,6 +3,7 @@
 #include <iostream>
 #include "Table.h"
 #include "functions.h"
+#include "List.h"
 using namespace std;
 
 void tableMenu()
@@ -58,9 +59,73 @@ void tableMenu()
     } while (opt!='0');
 }
 
+void listMenu()
+{
+    List list;
+    char opt;
+    string fileName;
+    int index, value;
+    do{
+        displayMenu("Lista");
+        opt = getch();
+        if(opt == '1')
+        {
+
+        }
+        if(opt == '2')
+        {
+
+        }
+        if(opt == '3')
+        {
+            cout << "Podaj liczbe do wpisania do listy: ";
+            cin >> value;
+            cout << "Podaj indeks listy do ktorego liczba zostanie wpisana:" << endl <<  "(Jezeli liczba bedzie wychodzic poza pozycje w liscie zostanie wpisana na pozycji pierwszej/ostatniej)" << endl;
+            cin >> index;
+            list.addNode(index, value);
+            list.displayFromHead();
+            
+        }
+        if(opt == '4')
+        {
+
+        }
+        if(opt == '5')
+        {
+            cout << "Podaj liczbe elementow listy do wygenerowania: ";
+            cin >> value;
+            list.generateList(value);
+            list.displayFromHead();
+        }
+        if(opt == '6')
+        {
+            cout << "1 - wyswietl od poczatku" << endl << "2 - wyświetl od końca" << endl << "Podaj numer: ";
+            while(true)
+            {
+                char x;
+                x = getchar();
+                if(x=='1')
+                {
+                    list.displayFromHead();
+                    break;
+                }
+                if(x=='2')
+                {
+                    list.displayFromTail();
+                    break;
+                }
+            }
+        }
+        if(opt == '7')
+        {
+            
+        }
+    } while (opt!='0');
+}
+
 int main()
 {
-    tableMenu();
+    listMenu();
     cout << "Zakonczono dzialanie programu";
     return 0;
 }
