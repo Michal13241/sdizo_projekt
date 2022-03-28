@@ -14,13 +14,13 @@ void tableMenu()
     do{
         displayMenu("Tablica");
         opt = getch();
-        if(opt == '0')
-        {
-            
-        }
         if(opt == '1')
         {
-            
+            string nazwa;
+            cout << "Podaj nazwę pliku: ";
+            cin >> nazwa;
+            if(tab.loadFromFile(nazwa))
+                tab.display();
         }
         if(opt == '2')
         {
@@ -28,15 +28,21 @@ void tableMenu()
         }
         if(opt == '3')
         {
-            
+
         }
         if(opt == '4')
         {
-            
+            cout << "Podaj wartosc liczby do znalezienia w tablicy:";
+            cin >> value;
+            if(tab.IsValueInTable(value))
+                cout << "liczba znajduje sie w tablicy" << endl;
+            else
+                cout << "liczby nie znaleziono w tablicy" << endl;
+            tab.display();
         }
         if(opt == '5')
         {
-            cout << "Podaj ilość elementów tablicy:";
+            cout << "Podaj ilosc elementow tablicy do wygenerowania:";
 			cin >> value;
 			tab.generateTable(value);
 			tab.display();
@@ -54,6 +60,7 @@ void tableMenu()
 
 int main()
 {
-    setlocale( LC_ALL, "pl_PL" );
     tableMenu();
+    cout << "Zakonczono dzialanie programu";
+    return 0;
 }

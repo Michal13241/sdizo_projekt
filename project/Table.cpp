@@ -3,25 +3,30 @@
 #include <iostream>
 #include <stdlib.h>
 #include <time.h>
+#include <fstream>
+#include <string>
 
 void Table::generateTable(int size)
 {
     srand (time(NULL));
-    tab = new int[size];
-    for(int i = 0; i < size; i++)
+    cnt = size;
+    tab = new int[cnt];
+    for(int i = 0; i < cnt; i++)
     {
         tab[i] = rand() % 100 + 1;
     }
-    cnt = size;
 }
 
 void Table::display()
 {
+    cout << "Tabela:" << endl;
+    if(cnt==0)
+        cout << "Tabela nie istnieje (ma 0 elementów)";
     for(int i = 0; i < cnt; i++)
     {
         cout << tab[i] << " ";
     }
-    cout << endl << "Naciśnij dowolny przycisk aby powrócić";
+    cout << endl << "Nacisnij dowolny przycisk aby powrocic";
     int stop = getch();
 }
 
@@ -33,4 +38,22 @@ bool Table::IsValueInTable(int val)
         return true;
     }
     return false;
+}
+
+bool Table::loadFromFile(string FileName)
+{
+    fstream myfile(FileName);
+    if(myfile.is_open())
+    {
+        myfile >> cnt;
+        tab = new int[cnt];
+        for(int i = 0; i < cnt; i++)
+        {
+            myfile >> tab[i];
+        }
+        myfile.close();
+        return 1;
+    }
+    cout << "Nie mozna otworzyc pliku" << endl;
+    return 0;
 }

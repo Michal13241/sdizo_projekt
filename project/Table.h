@@ -7,8 +7,9 @@ using namespace std;
 class Table
 {
 	int *tab;
-	int cnt;
+	int cnt = 0;
 public:
+    bool loadFromFile(string FileName);
     bool IsValueInTable(int val);
     void generateTable(int size);
     void display();
