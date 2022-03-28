@@ -9,6 +9,7 @@ class Table
 	int *tab;
 	int cnt;
 public:
+    bool IsValueInTable(int val);
     void generateTable(int size);
     void display();
     void menu();

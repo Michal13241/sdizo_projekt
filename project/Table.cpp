@@ -1,4 +1,5 @@
 #include "Table.h"
+#include "functions.h"
 #include <iostream>
 #include <stdlib.h>
 #include <time.h>
@@ -20,9 +21,16 @@ void Table::display()
     {
         cout << tab[i] << " ";
     }
+    cout << endl << "Naciśnij dowolny przycisk aby powrócić";
+    int stop = getch();
 }
 
-void Table::menu()
+bool Table::IsValueInTable(int val)
 {
-
+    for(int i = 0; i < cnt; i++)
+    {
+        if(tab[i]==val)
+        return true;
+    }
+    return false;
 }
