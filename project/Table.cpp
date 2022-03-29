@@ -57,3 +57,34 @@ bool Table::loadFromFile(string FileName)
     cout << "Nie mozna otworzyc pliku" << endl;
     return 0;
 }
+
+void Table::addValue(int index, int value)
+{
+    cnt++;
+    tab = (int*) realloc (tab, cnt * sizeof(int));
+    if(index > cnt-1)
+        index = cnt-1;
+    if(index < 0)
+        index=0;
+    for(int i = cnt-1; i > index; i--)
+    {
+        tab[i]=tab[i-1];
+    }
+    tab[index]=value;
+    return;
+}
+
+void Table::deleteFromTable(int index)
+{
+    if(index > cnt-1)
+        index = cnt-1;
+    if(index < 0)
+        index = 0;
+    for(int i = index; i < cnt-1; i++)
+    {
+        tab[i] = tab[i+1];
+    }
+    cnt--;
+    tab = (int*) realloc(tab, cnt * sizeof(int));
+    return;
+}

@@ -25,11 +25,19 @@ void tableMenu()
         }
         if(opt == '2')
         {
-            
+            cout << "Podaj indeks liczby z ktorego liczba ma byc usunieta: ";
+            cin >> index;
+            tab.deleteFromTable(index);
+            tab.display();
         }
         if(opt == '3')
         {
-
+            cout << "Podaj wartosc liczby do wpisania: ";
+            cin >> value;
+            cout << "Podaj indeks tablicy pod ktory liczba ma byc wpisana: " << endl <<  "(Jezeli liczba bedzie wychodzic poza pozycje w tablice zostanie wpisana na pozycji pierwszej/ostatniej)" << endl;;
+            cin >> index;
+            tab.addValue(index, value);
+            tab.display();
         }
         if(opt == '4')
         {
@@ -70,11 +78,17 @@ void listMenu()
         opt = getch();
         if(opt == '1')
         {
-            
+            cout << "Podaj nazwe pliku z rozszerzeniem do wczytania: ";
+            cin >> fileName;
+            list.loadFromFile(fileName);
+            list.displayFromHead();
         }
         if(opt == '2')
         {
-
+            cout << "Podaj wartosc liczby do usuniecia z listy: ";
+            cin >> value;
+            list.deleteFromList(value);
+            list.displayFromHead();
         }
         if(opt == '3')
         {
@@ -132,7 +146,16 @@ void listMenu()
 
 int main()
 {
-    listMenu();
-    cout << "Zakonczono dzialanie programu";
+    char opt;
+    do
+    {
+        cout << "1 - Tablica" << endl << "2 - Lista" << endl << "0 - zakoncz program" << endl << "Podaj opcje: " << endl;
+        opt = getch();
+        if(opt=='1')
+            tableMenu();
+        if(opt=='2')
+            listMenu();
+    } while (opt!='0');
+    cout << endl << "Zakonczono dzialanie programu";
     return 0;
 }

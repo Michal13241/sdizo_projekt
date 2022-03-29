@@ -1,6 +1,7 @@
 #include<conio.h>
 #include<string>
 #include<iostream>
+using namespace std; 
 
 struct node
 {
@@ -24,4 +25,5 @@ public:
     void generateList(int size);
     bool isInTheList(int value);
     bool loadFromFile(string FileName);
+    void deleteFromList(int value);
 };

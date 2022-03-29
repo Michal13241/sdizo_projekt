@@ -14,4 +14,5 @@ public:
     bool IsValueInTable(int val);
     void generateTable(int size);
     void display();
+    void reallocate();
 };

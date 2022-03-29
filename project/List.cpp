@@ -123,6 +123,8 @@ node* List::searchValue(int value)
 
 void List::generateList(int size)
 {
+    head = NULL;
+    tail = NULL;
     srand (time(NULL));
     for(int i = 1; i < size+1; i++)
     {
@@ -143,19 +145,44 @@ bool List::isInTheList(int value)
 
 bool List::loadFromFile(string FileName)
 {
+    head = NULL;
+    tail = NULL;
     fstream myfile(FileName);
     if(myfile.is_open())
     {
-        int size, x;
-        myfile >> size; 
-        for(int i = 0; i < size; i++)
+        int a, b;
+        myfile >> a; 
+        for(int i = 0; i < a; i++)
         {
-            myfile >> x;
-            addNode(i, x);
+            myfile >> b;
+            addNode(i, b);
         }
         myfile.close();
         return 1;
     }
     cout << "Nie mozna otworzyc pliku" << endl;
     return 0;
+}
+
+void List::deleteFromList(int value)
+{
+    node *temp;
+    temp = searchValue(value);
+    if(temp == NULL)
+        return;
+    if(temp->prev!=NULL)
+        temp->prev->next = temp->next;
+    else
+        head = temp->next;
+    if(temp->next!=NULL)
+        temp->next->prev = temp->prev;
+    else
+        tail = temp->prev;
+    listLength--;
+    if(listLength==0)
+    {
+        head = NULL;
+        tail = NULL;
+    }
+    free(temp);
 }
