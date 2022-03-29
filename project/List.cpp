@@ -141,7 +141,21 @@ bool List::isInTheList(int value)
     return temp;
 }
 
-bool List::loadFromFile(string value)
+bool List::loadFromFile(string FileName)
 {
-    
+    fstream myfile(FileName);
+    if(myfile.is_open())
+    {
+        int size, x;
+        myfile >> size; 
+        for(int i = 0; i < size; i++)
+        {
+            myfile >> x;
+            addNode(i, x);
+        }
+        myfile.close();
+        return 1;
+    }
+    cout << "Nie mozna otworzyc pliku" << endl;
+    return 0;
 }
